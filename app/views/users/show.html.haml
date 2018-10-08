@@ -1,4 +1,4 @@
-= link_to "Log out", session_path(current_user.id), method: :delete, class: 'button is-light'
+- content_for(:title) { "#{@user.name}さんのページ" }
 %h1.title
   = @user.name
   のページ

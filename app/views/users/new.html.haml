@@ -1,4 +1,5 @@
-%h1.title Sign up
+- content_for(:title) { 'ユーザ登録' }
+%h1.title ユーザ登録
 - if @user.errors.any?
   #error_explanation
     %h2
@@ -26,4 +27,4 @@
       = f.password_field :password_confirmation, class: "form-control", placeholder: "pleas duplicate the password"
   .field
     .control
-      = f.submit "Create my account", class: 'button'
+      = f.submit "登録", class: 'button'
