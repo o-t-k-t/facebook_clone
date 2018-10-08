@@ -28,7 +28,10 @@ group :development, :test do
   # Debug
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
-  
+
+  # Static analyze
+  gem 'rubocop'
+
   # Test
   gem 'selenium-webdriver'
 end
