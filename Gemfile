@@ -18,14 +18,20 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-gem 'bcrypt', '~> 3.1.7'
+gem 'haml-rails'
+gem "bulma-rails", "~> 0.4.2"
 
+# Auth
+gem 'bcrypt', '~> 3.1.11'
 
 group :development, :test do
   # Debug
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
-  
+
+  # Static analyze
+  gem 'rubocop'
+
   # Test
   gem 'selenium-webdriver'
 end
