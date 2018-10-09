@@ -35,6 +35,7 @@ group :development, :test do
 
   # Static analyze
   gem 'rubocop'
+  gem 'haml_lint'
 
   # Test
   gem 'selenium-webdriver'
