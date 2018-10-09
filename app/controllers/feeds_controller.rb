@@ -2,7 +2,7 @@ class FeedsController < ApplicationController
   before_action :require_logged_in, only: %i[new create destroy]
 
   def index
-    @feeds = Feed.all
+    @feeds = Feed.all.includes(:user).order(:created_at)
   end
 
   def new
@@ -15,6 +15,7 @@ class FeedsController < ApplicationController
 
   def create
     @feed = Feed.new(feed_params)
+    @feed.user_id = current_user.id
 
     if @feed.save
       redirect_to feeds_path

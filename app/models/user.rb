@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :feeds, dependent: :destroy
+
   validates :name, presence: true, length: { maximum: 30 }
 
   before_validation { email.downcase! }
