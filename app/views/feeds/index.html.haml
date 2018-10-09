@@ -1,24 +1,16 @@
-%h1 Listing feeds
+%h1.title フィード一覧
 
-%table
-  %thead
-    %tr
-      %th Title
-      %th Description
-      %th Image
-      %th
-      %th
-      %th
-
-  %tbody
-    - @feeds.each do |feed|
-      %tr
-        %td= feed.title
-        %td= feed.description
-        %td
-          %p= image_tag feed.image
-        %td= link_to 'Destroy', feed_path(feed.id), method: :delete, data: { confirm: 'Are you sure?' }
-        %td= link_to 'Edit', edit_feed_path(feed.id)
-%br
+- @feeds.each do |feed|
+  %article.media
+    .media-content
+      .content
+        %strong= feed.title
+        %small #{feed.created_at} #{feed.user.name} authored
+        %p= feed.description
+        %p= image_tag feed.image
+      %nav.level.is-mobile
+        .level-left
+          .level-item=link_to 'Destroy', feed_path(feed.id), method: :delete, data: { confirm: 'Are you sure?' }
+          .level-item=link_to 'Edit', edit_feed_path(feed.id)
 
 = link_to 'New feed', new_feed_path
