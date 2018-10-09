@@ -9,20 +9,38 @@ class FeedsController < ApplicationController
     @feed = Feed.new
   end
 
+  def edit
+    @feed = Feed.find(params[:id])
+  end
+
   def create
     @feed = Feed.new(feed_params)
 
     if @feed.save
-      redirect_to controller: 'users', action: 'show', id: @feed.id
+      redirect_to feeds_path
     else
       render :new
     end
   end
 
+  def update
+    @feed = Feed.find(params[:id])
+    if @feed.update(feed_params)
+      redirect_to feeds_path
+    else
+      render :edit
+    end
+  end
+
   def destroy
-    @feed = Feed.new(params[:id])
+    @feed = Feed.find(params[:id])
     @feed.delete
-    redirect_to :index
+    redirect_to feeds_path
+  end
+
+  def confirm
+    @feed = Feed.new(feed_params)
+    render :new and return if @feed.invalid?
   end
 
   private

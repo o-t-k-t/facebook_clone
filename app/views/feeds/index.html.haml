@@ -17,7 +17,8 @@
         %td= feed.description
         %td
           %p= image_tag feed.image
-        %td= link_to 'Destroy', feeds_path, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Destroy', feed_path(feed.id), method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Edit', edit_feed_path(feed.id)
 %br
 
 = link_to 'New feed', new_feed_path
