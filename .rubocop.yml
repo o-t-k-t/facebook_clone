@@ -6,6 +6,7 @@ AllCops:
     - "vendor/**/*" # rubocop config/default.yml
     - "db/schema.rb"
   DisplayCopNames: true
+  TargetRubyVersion: 2.3
 
 # Style/AsciiComments:
 #   Enabled: false
@@ -14,6 +15,9 @@ Style/Documentation:
   Enabled: false
 
 Style/EmptyMethod:
+  Enabled: false
+
+AndOr:
   Enabled: false
 
 Metrics/AbcSize:
