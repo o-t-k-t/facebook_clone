@@ -1,19 +1,20 @@
 = form_for @feed do |f|
   - if @feed.errors.any?
-    #error_explanation
+    .notification.is-warning
       %h2 #{pluralize(@feed.errors.count, 'error')} prohibited this feed from being saved:
       %ul
         - @feed.errors.full_messages.each do |message|
           %li= message
-
   .field
     = f.label :title
-    = f.text_field :title
+    .control= f.text_field :title
   .field
     = f.label :description
-    = f.text_field :description
+    .control= f.text_field :description
   .field
     = f.label :image
-    = f.file_field :image
-  .actions
-    = f.submit 'Save'
+    .control
+      = f.file_field :image
+  .field
+    .control
+      = f.submit '投稿'

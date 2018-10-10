@@ -1,7 +1,7 @@
 - content_for(:title) { 'ユーザ登録' }
 %h1.title ユーザ登録
 - if @user.errors.any?
-  #error_explanation
+  .notification.is-warning
     %h2
       = pluralize(@user.errors.count, "error")
       prohibited this @user from being saved:
