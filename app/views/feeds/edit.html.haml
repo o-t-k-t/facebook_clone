@@ -1,7 +1,5 @@
 %h1 Editing feed
-
-= render 'form'
+= render partial: 'form', locals: { feed: @feed }
 
 = link_to 'Show', @feed
-\|
 = link_to 'Back', feeds_path
