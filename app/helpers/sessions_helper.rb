@@ -18,4 +18,9 @@ module SessionsHelper
   def log_out
     session.delete(:user_id)
   end
+
+  # TODO: move to suite place
+  def require_logged_in
+    redirect_to new_session_path, notice: 'ログインしてください' unless logged_in?
+  end
 end

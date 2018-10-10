@@ -1,8 +1,8 @@
 class FeedsController < ApplicationController
-  before_action :require_logged_in, only: %i[new create destroy]
+  before_action :require_logged_in
 
   def index
-    @feeds = Feed.all.includes(:user).order(:created_at)
+    @feeds = Feed.all.includes(:user).order('created_at desc')
   end
 
   def new
@@ -18,7 +18,7 @@ class FeedsController < ApplicationController
     @feed.user_id = current_user.id
 
     if @feed.save
-      redirect_to feeds_path
+      redirect_to feeds_path, notice: 'フィードを作成しました'
     else
       render :new
     end
@@ -27,7 +27,7 @@ class FeedsController < ApplicationController
   def update
     @feed = Feed.find(params[:id])
     if @feed.update(feed_params)
-      redirect_to feeds_path
+      redirect_to feeds_path, notice: 'フィードを作成しました'
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class FeedsController < ApplicationController
   def destroy
     @feed = Feed.find(params[:id])
     @feed.delete
-    redirect_to feeds_path
+    redirect_to feeds_path, notice: 'フィードを削除しました'
   end
 
   def confirm
@@ -48,9 +48,5 @@ class FeedsController < ApplicationController
 
   def feed_params
     params.require(:feed).permit(:title, :description, :image, :image_cache)
-  end
-
-  def require_logged_in
-    redirect_to feeds_path unless logged_in?
   end
 end
