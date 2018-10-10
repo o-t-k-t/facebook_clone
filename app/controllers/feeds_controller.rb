@@ -6,7 +6,12 @@ class FeedsController < ApplicationController
   end
 
   def new
-    @feed = Feed.new
+    @feed =
+      if params[:back]
+        Feed.new(feed_params)
+      else
+        Feed.new
+      end
   end
 
   def edit
@@ -15,7 +20,6 @@ class FeedsController < ApplicationController
 
   def create
     @feed = Feed.new(feed_params)
-    @feed.user_id = current_user.id
 
     if @feed.save
       redirect_to feeds_path, notice: 'フィードを作成しました'
@@ -41,12 +45,13 @@ class FeedsController < ApplicationController
 
   def confirm
     @feed = Feed.new(feed_params)
+    @feed.user_id = current_user.id
     render :new and return if @feed.invalid?
   end
 
   private
 
   def feed_params
-    params.require(:feed).permit(:title, :description, :image, :image_cache)
+    params.require(:feed).permit(:title, :description, :image, :image_cache, :user_id)
   end
 end
