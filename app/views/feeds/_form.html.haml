@@ -1,9 +1,9 @@
-= form_for @feed do |f|
-  - if @feed.errors.any?
+= form_with model: feed do |f|
+  - if feed.errors.any?
     .notification.is-warning
-      %h2 #{pluralize(@feed.errors.count, 'error')} prohibited this feed from being saved:
+      %h2 #{pluralize(feed.errors.count, 'error')} prohibited this feed from being saved:
       %ul
-        - @feed.errors.full_messages.each do |message|
+        - feed.errors.full_messages.each do |message|
           %li= message
   .field
     = f.label :title
