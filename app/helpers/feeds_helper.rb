@@ -4,7 +4,7 @@ module FeedsHelper
     when 'new', 'confirm'
       confirm_feeds_path
     when 'edit', 'update', 'create'
-      feeds_path
+      feed_path(@feed)
     else
       raise "called by unexpected controller #{action_name}"
     end
