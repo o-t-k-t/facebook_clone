@@ -1,4 +1,4 @@
-= form_with model: feed do |f|
+= form_with model: feed, url: form_submit_path, local: true do |f|
   - if feed.errors.any?
     .notification.is-warning
       %h2 #{pluralize(feed.errors.count, 'error')} prohibited this feed from being saved:

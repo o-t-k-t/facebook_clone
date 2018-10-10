@@ -1,14 +1,15 @@
 %h1.title 投稿内容確認
-%h3.subtitle 以下の内容で、送信する。
+%p 以下の内容で、送信します。
 = form_with(model: @feed, url: feeds_path, local: true) do |form|
   = form.hidden_field :title
-  = form.hidden_field :content
-  %p
-    本文:#{@tweet.content}
+  = form.hidden_field :description
+  %p 本文:#{@feed.description}
   = form.hidden_field :image
-  = form.submit  "登録する"
+  = form.hidden_field :user_id
+  = form.submit '登録する'
 = form_with(model: @feed, url: new_feed_path, local: true, method: :get) do |form|
   = form.hidden_field :title
-  = form.hidden_field :content
+  = form.hidden_field :description
   = form.hidden_field :image
-  = form.submit "もどる", name: 'back'
+  = form.hidden_field :user_id
+  = form.submit 'もどる', name: 'back'
